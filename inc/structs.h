@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:00:13 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/02 10:05:33 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:56:16 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,33 @@
 
 typedef struct s_game t_game;
 typedef struct s_map t_map;
+typedef struct s_point t_point;
+typedef struct s_player t_player;
+
+struct s_point
+{
+	int x;
+	int y;	
+};
+
+struct s_player
+{
+	t_point coords;
+};
 
 struct s_game
 {
 	t_map *map;
 };
 
-
 struct s_map
 {
 	char **map;
-	int columns;
 	int rows;
-	/*
-	int objectives;
-	*/
+	int columns;
+	t_point start;
+	t_point out;
+	int collectable;
 };
 
 #endif
