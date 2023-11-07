@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include "../inc/structs.h"
-#include "../inc/map.h"
+#include "../inc/game.h"
 
 
 void leaks()
@@ -22,17 +22,22 @@ void leaks()
 
 int	main(int argc, char *argv[])
 {
-	t_map	*map;
 	atexit(leaks);
+
+	/*t_map	*map;
+	t_player	*player;*/
+	t_game	*game;
+
+
 	if (argc != 2)
 		return (printf("Usage: %s <name_map>.ber\n", argv[0]));	
 
-	map = get_map(argv[1]);
-	if (!map)
-		return (printf("Error reading the map\n"));
+	game = get_game(argv[1]);
+	if (!game)
+		return (1);
 
-	print_map_info(map);
+	/* print_map_info(game->map); */
 
-	delete_map(&map);
+	delete_game(game);
 	return (0);
 }
