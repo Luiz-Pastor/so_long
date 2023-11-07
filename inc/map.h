@@ -22,7 +22,9 @@
 # define MAP_CH "01CEP"
 
 t_map	*get_map(char *filename);
-void	*delete_map(t_map **map);
+void	*delete_map(t_map *map);
 void	print_map_info(t_map *map);
+
+int	find_path(t_map *map);
 
 #endif
