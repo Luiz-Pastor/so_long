@@ -27,11 +27,14 @@ struct s_point
 struct s_player
 {
 	t_point coords;
+	int collec;
 };
 
 struct s_game
 {
 	t_map *map;
+	t_player *player;
+	int steps;
 };
 
 struct s_map
