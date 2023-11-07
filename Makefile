@@ -4,7 +4,10 @@ CFLAGS := -Wall -Werror -Wextra
 ###############################################
 NAME=so_long
 SRC=	main.c	\
-		map.c
+		map.c	\
+		find_path.c \
+		game.c \
+		player.c
 OBJ=$(SRC:%.c=%.o)
 ###############################################
 SRC_FOLDER=src
