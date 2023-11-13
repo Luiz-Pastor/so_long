@@ -6,13 +6,15 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:00:11 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/03 09:33:37 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:42:05 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# include "../mlx/mlx.h"
 #include <stdio.h>
 #include "../inc/structs.h"
 #include "../inc/game.h"
+#include "../inc/screen.h"
 
 
 void leaks()
@@ -24,10 +26,8 @@ int	main(int argc, char *argv[])
 {
 	atexit(leaks);
 
-	/*t_map	*map;
-	t_player	*player;*/
 	t_game	*game;
-
+	t_data	*screen;
 
 	if (argc != 2)
 		return (printf("Usage: %s <name_map>.ber\n", argv[0]));	
@@ -36,8 +36,11 @@ int	main(int argc, char *argv[])
 	if (!game)
 		return (1);
 
-	/* print_map_info(game->map); */
+	screen = get_screen(game);
+	if (!screen)
+		return (1);
 
-	delete_game(game);
+	mlx_loop_hook(screen->mlx, render, screen);
+	mlx_loop(screen->mlx);
 	return (0);
 }
