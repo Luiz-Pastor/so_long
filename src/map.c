@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:49:11 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/03 13:48:57 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:25:09 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,5 +238,5 @@ void	print_map_info(t_map *map)
 	printf("> Hay camino posible: ");
 	find_path(map) != 0 ? printf("Si\n") : printf("No\n");
 	printf("> Mapa encerrado: ");
-	map_locked(map) == 0 ? printf("Si\n") : printf("No\n");
+	map_locked(map) == 1 ? printf("Si\n") : printf("No\n");
 }
