@@ -1,15 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_path.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 09:47:31 by lpastor-          #+#    #+#             */
+/*   Updated: 2023/11/14 09:47:31 by lpastor-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/map.h"
 
 static int	find_path_rec(char **map, int x, int y, int x_max, int y_max)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (map[y][x] == 'E')
 		return (1);
 	else
 		map[y][x] = '1';
-	
 	if (x - 1 >= 0 && map[y][x - 1] != '1')
 		count += find_path_rec(map, x - 1, y, x_max, y_max);
 	if (x + 1 < x_max && map[y][x + 1] != '1')
@@ -25,7 +36,7 @@ static void	check_collec(int *res, char **map)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	if (*res == 0)
 		return ;
@@ -47,9 +58,9 @@ static void	check_collec(int *res, char **map)
 
 int	find_path(t_map *map)
 {
-	char **map_copy;
-	int y;	
-	int res;
+	char	**map_copy;
+	int		y;	
+	int		res;
 
 	y = 0;
 	map_copy = (char **) malloc((map->rows + 1) * sizeof(char *));

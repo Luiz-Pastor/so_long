@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:49:11 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/13 12:25:09 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:00:51 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,20 @@ static int	get_columns(char **map)
 	return (column);
 }
 
-static char **read_map(char *filename)
+static char	**read_map(char *filename)
 {
 	int		fd;
 	int		rows;
 	int		i;
 	char	**map;
-	
+
+	i = 0;
 	rows = get_rows(filename);
 	if (rows == -1)
 		return (NULL);
 	map = (char **) malloc((rows + 1) * sizeof(char *));
 	if (!map)
 		return (NULL);
-
-	i = 0;
 	fd = open(filename, O_RDONLY);
 	while (i < rows)
 	{
@@ -87,8 +86,8 @@ static char **read_map(char *filename)
 int	count_collectable(t_map *map)
 {
 	int	y;
-	int x;
-	int count;
+	int	x;
+	int	count;
 
 	y = 0;
 	count = 0;
@@ -110,10 +109,10 @@ int	count_collectable(t_map *map)
 
 int	set_points(t_map *map)
 {
-	int y;
-	int x;
-	int start;
-	int end;
+	int	y;
+	int	x;
+	int	start;
+	int	end;
 
 	start = 0;
 	end = 0;
@@ -136,7 +135,7 @@ int	set_points(t_map *map)
 				if (end)
 					return (1);
 				map->out.x = x;
-				map->out.y = y;	
+				map->out.y = y;
 				end = 1;
 			}
 			x++;
@@ -146,11 +145,10 @@ int	set_points(t_map *map)
 	return (0);
 }
 
-
 int	map_locked(t_map *map)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (map->map[y])
@@ -170,7 +168,6 @@ int	map_locked(t_map *map)
 	}
 	return (1);
 }
-
 
 t_map	*check_map(t_map *map)
 {
@@ -192,24 +189,21 @@ t_map	*get_map(char *filename)
 	map = (t_map *) malloc(sizeof(t_map));
 	if (!map)
 		return (NULL);
-	map->rows = get_rows(filename); 
+	map->rows = get_rows(filename);
 	map->map = read_map(filename);
 	map->columns = get_columns(map->map);
 	map->collectable = count_collectable(map);
 	set_points(map);
-	/*if (map->collectable < 1 || set_points(map))
-		return (delete_map(map));*/
 	return (check_map(map));
 }
 
 void	*delete_map(t_map *map)
 {
 	int	index;
-	
+
 	index = 0;
 	if (!map)
 		return (NULL);
-
 	print_map_info(map);
 	if (map->map)
 	{
@@ -220,7 +214,7 @@ void	*delete_map(t_map *map)
 	free(map);
 	return (NULL);
 }
-
+/*
 void	print_map_info(t_map *map)
 {
 	int	y = 0;
@@ -239,4 +233,4 @@ void	print_map_info(t_map *map)
 	find_path(map) != 0 ? printf("Si\n") : printf("No\n");
 	printf("> Mapa encerrado: ");
 	map_locked(map) == 1 ? printf("Si\n") : printf("No\n");
-}
+}*/
