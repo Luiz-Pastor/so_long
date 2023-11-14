@@ -8,7 +8,8 @@ SRC=	main.c	\
 		find_path.c \
 		game.c \
 		player.c \
-		screen.c
+		screen.c \
+		movement.c
 OBJ=$(SRC:%.c=%.o)
 ###############################################
 SRC_FOLDER=src
