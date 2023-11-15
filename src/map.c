@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:49:11 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/14 10:00:51 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/15 08:43:10 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,105 +83,6 @@ static char	**read_map(char *filename)
 	return (map);
 }
 
-int	count_collectable(t_map *map)
-{
-	int	y;
-	int	x;
-	int	count;
-
-	y = 0;
-	count = 0;
-	while (map->map[y])
-	{
-		x = 0;
-		while (map->map[y][x])
-		{
-			if (map->map[y][x] == 'C')
-				count++;
-			if (!ft_strchr(MAP_CH, map->map[y][x]))
-				return (-1);
-			x++;
-		}
-		y++;
-	}
-	return (count);
-}
-
-int	set_points(t_map *map)
-{
-	int	y;
-	int	x;
-	int	start;
-	int	end;
-
-	start = 0;
-	end = 0;
-	y = 0;
-	while (map->map[y])
-	{
-		x = 0;
-		while (map->map[y][x])
-		{
-			if (map->map[y][x] == 'P')
-			{
-				if (start)
-					return (1);
-				map->start.x = x;
-				map->start.y = y;
-				start = 1;
-			}
-			else if (map->map[y][x] == 'E')
-			{
-				if (end)
-					return (1);
-				map->out.x = x;
-				map->out.y = y;
-				end = 1;
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
-
-int	map_locked(t_map *map)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (map->map[y])
-	{
-		x = 0;
-		while (map->map[y][x])
-		{
-			if ((y == 0 || y == map->rows - 1) && map->map[y][x] != '1')
-				return (0);
-			if (x == 0 && map->map[y][x] != '1')
-				return (0);
-			x++;
-		}
-		if (map->map[y][x - 1] != '1')
-			return (0);
-		y++;
-	}
-	return (1);
-}
-
-t_map	*check_map(t_map *map)
-{
-	if (!map)
-		return (NULL);
-	if (map->rows < 1 || map->columns < 1 || !(map->map))
-		return (delete_map (map));
-	if (map->collectable < 1 || set_points(map))
-		return (delete_map(map));
-	if (!map_locked(map) || !find_path(map))
-		return (delete_map(map));
-	return (map);
-}
-
 t_map	*get_map(char *filename)
 {
 	t_map	*map;
@@ -193,7 +94,6 @@ t_map	*get_map(char *filename)
 	map->map = read_map(filename);
 	map->columns = get_columns(map->map);
 	map->collectable = count_collectable(map);
-	set_points(map);
 	return (check_map(map));
 }
 
@@ -204,7 +104,6 @@ void	*delete_map(t_map *map)
 	index = 0;
 	if (!map)
 		return (NULL);
-	print_map_info(map);
 	if (map->map)
 	{
 		while (map->map[index])
