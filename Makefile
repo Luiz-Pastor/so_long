@@ -9,7 +9,9 @@ SRC=	main.c	\
 		game.c \
 		player.c \
 		screen.c \
-		movement.c
+		movement.c \
+		check_map.c \
+		print_sprites.c
 OBJ=$(SRC:%.c=%.o)
 ###############################################
 SRC_FOLDER=src
@@ -48,6 +50,6 @@ fclean: clean
 
 re: fclean
 	@make -C libft/ libft_re
-	make $(NAME)
+	@make $(NAME)
 
 .PHONY: all clean fclean re
