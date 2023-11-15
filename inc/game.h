@@ -19,5 +19,7 @@
 
 t_game	*get_game(char *filename);
 void	*delete_game(t_game *game);
+void	print_steps(t_game *game);
+void	print_end(t_game *game);
 
 #endif

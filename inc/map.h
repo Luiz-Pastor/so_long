@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:54:31 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/14 09:39:57 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:19:35 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ void	*delete_map(t_map *map);
 void	print_map_info(t_map *map);
 
 int		find_path(t_map *map);
+int		map_locked(t_map *map);
+
+int		count_collectable(t_map *map);
+int		set_points(t_map *map);
+t_map	*check_map(t_map *map);
 
 #endif

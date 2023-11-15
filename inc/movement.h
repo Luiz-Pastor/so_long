@@ -19,6 +19,6 @@
 void	move_right(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
-void	move_right(t_game *game);
+void	move_up(t_game *game);
 
 #endif
