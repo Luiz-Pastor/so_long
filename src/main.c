@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:00:11 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/14 09:47:18 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:58:21 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,30 @@ void	leaks(void)
 	system("leaks -q so_long");
 }
 
+/* ber */
+int	check_extension(char *filename)
+{
+	int	length;
+
+	length = ft_strlen(filename);
+	if (filename[length - 1] == 'r' && \
+		filename[length - 2] == 'e' && \
+		filename[length - 3] == 'b' && \
+		filename[length - 4] == '.')
+		return (1);
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_game	*game;
 
 	atexit(leaks);
-	if (argc != 2)
-		return (printf("Usage: %s <name_map>.ber\n", argv[0]));
+	if (argc != 2 || !check_extension(argv[1]))
+		return (write(1, "Usage: ./so_long <map_file>.ber\n", 33));
 	game = get_game(argv[1]);
 	if (!game)
 		return (1);
-	mlx_loop_hook(game->screen->mlx, render, game->screen);
 	mlx_loop(game->screen->mlx);
-	return (0);
+	exit(0);
 }
