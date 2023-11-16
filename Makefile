@@ -11,24 +11,23 @@ SRC=	main.c	\
 		screen.c \
 		movement.c \
 		check_map.c \
-		print_sprites.c
+		print_sprites.c \
+		set_sprites.c \
+		change_sprites.c
 OBJ=$(SRC:%.c=%.o)
-###############################################
 SRC_FOLDER=src
-
+HEADER=structs.h game.h map.h movement.h player.h screen.h
+###############################################
 MLB_FLAGS=-Lmlx -lmlx -framework OpenGL -framework AppKit
 ###############################################
 
-all: $(NAME)
+all: $(NAME) run
 
 $(NAME): $(OBJ) libft/libft.a
 	$(CC) $^ $(MLB_FLAGS) -o $(NAME)
 
 libft/libft.a:
 	@make -C libft/
-
-test: del.o
-	cc del.o $(MLB_FLAGS) -o end
 
 %.o: $(SRC_FOLDER)/%.c
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
@@ -52,4 +51,10 @@ re: fclean
 	@make -C libft/ libft_re
 	@make $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re nm norminette
+
+###############################################
+
+nm: norminette
+norminette:
+	@norminette src/ src_bonus/ inc/ libft/ | grep -v "OK!"
