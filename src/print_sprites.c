@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 08:59:05 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/15 10:32:05 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:08:12 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	print_sprites(t_data *screen, int x, int y, void *sprite)
 
 void	manage_sprites(t_data *screen, int x, int y)
 {
+	change_sprites(screen, screen->frame);
 	if (screen->map[y][x] == 'P')
 	{
 		print_sprites(screen, x, y, screen->floor_sprite);

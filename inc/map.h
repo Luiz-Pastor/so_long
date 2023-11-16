@@ -6,14 +6,13 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:54:31 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/15 09:19:35 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/16 08:49:43 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "../inc/structs.h"

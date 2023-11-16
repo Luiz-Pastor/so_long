@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:00:13 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/15 10:35:20 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:18:49 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_map	t_map;
 typedef struct s_point	t_point;
 typedef struct s_player	t_player;
 typedef struct s_data	t_data;
+typedef struct s_images	t_images;
 
 struct s_point
 {
@@ -33,15 +34,18 @@ struct s_player
 
 struct s_data
 {
-	void	*mlx;
-	void	*win;
-	char	**map;
-	void	*player_sprite;
-	void	*wall_sprite;
-	void	*floor_sprite;
-	void	*end_sprite;
-	void	*coll_sprite;
-	t_game	*game;
+	void		*mlx;
+	void		*win;
+	char		**map;
+	void		*player_sprite;
+	void		*wall_sprite;
+	void		*floor_sprite;
+	void		*end_sprite;
+	void		*coll_sprite;
+	t_game		*game;
+	int			count;
+	int			frame;
+	t_images	*sprites;
 };
 
 struct s_map
@@ -60,6 +64,20 @@ struct s_game
 	t_player	*player;
 	t_data		*screen;
 	int			steps;
+};
+
+struct s_images
+{
+	void	*player1;
+	void	*player2;
+	void	*wall1;	
+	void	*wall2;	
+	void	*back1;	
+	void	*back2;	
+	void	*end1;	
+	void	*end2;	
+	void	*coll1;	
+	void	*coll2;	
 };
 
 #endif

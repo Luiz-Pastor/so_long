@@ -6,11 +6,10 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:00:11 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/15 11:58:21 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:04:48 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../mlx/mlx.h"
 #include "../inc/structs.h"
 #include "../inc/game.h"
@@ -21,7 +20,6 @@ void	leaks(void)
 	system("leaks -q so_long");
 }
 
-/* ber */
 int	check_extension(char *filename)
 {
 	int	length;
