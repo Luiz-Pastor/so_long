@@ -25,13 +25,13 @@ static int	find_path_rec(char **map, int x, int y, t_map *data)
 		return (1);
 	else
 		map[y][x] = '1';
-	if (x - 1 >= 0 && map[y][x - 1] != '1')
+	if (x - 1 >= 0 && map[y][x - 1] != '1' && map[y][x - 1] != 'M')
 		count += find_path_rec(map, x - 1, y, data);
-	if (x + 1 < x_max && map[y][x + 1] != '1')
+	if (x + 1 < x_max && map[y][x + 1] != '1' && map[y][x + 1] != 'M')
 		count += find_path_rec(map, x + 1, y, data);
-	if (y - 1 >= 0 && map[y - 1][x] != '1')
+	if (y - 1 >= 0 && map[y - 1][x] != '1' && map[y - 1][x] != 'M')
 		count += find_path_rec(map, x, y - 1, data);
-	if (y + 1 < y_max && map[y + 1][x] != '1')
+	if (y + 1 < y_max && map[y + 1][x] != '1' && map[y + 1][x] != 'M')
 		count += find_path_rec(map, x, y + 1, data);
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 08:42:57 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/15 08:43:32 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:10:14 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	count_collectable(t_map *map)
 
 	y = 0;
 	count = 0;
+	if (!(map->map))
+		return (-1);
 	while (map->map[y])
 	{
 		x = 0;
@@ -65,8 +67,10 @@ int	set_points(t_map *map)
 
 	start = 0;
 	end = 0;
-	y = 0;
-	while (map->map[y])
+	y = -1;
+	if (!(map->map))
+		return (1);
+	while (map->map[++y])
 	{
 		x = 0;
 		while (map->map[y][x])
@@ -79,7 +83,6 @@ int	set_points(t_map *map)
 					return (1);
 			x++;
 		}
-		y++;
 	}
 	return (0);
 }

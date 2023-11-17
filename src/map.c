@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:49:11 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/15 08:43:10 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:13:32 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static char	**read_map(char *filename)
 	if (!map)
 		return (NULL);
 	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
 	while (i < rows)
 	{
 		map[i++] = get_next_line(fd);
