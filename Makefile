@@ -57,4 +57,4 @@ re: fclean
 
 nm: norminette
 norminette:
-	@norminette src/ src_bonus/ inc/ libft/ | grep -v "OK!"
+	@norminette src/ inc/ libft/ | grep -v "OK!"
