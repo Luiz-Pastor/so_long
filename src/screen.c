@@ -6,15 +6,13 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 08:58:26 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/16 12:39:03 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:31:43 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/screen.h"
 #include "../inc/game.h"
 #include "../inc/movement.h"
-
-#include <stdio.h>
 
 #define FRAMES_CHANGE 50
 
@@ -98,11 +96,12 @@ t_data	*get_screen(int columns, int rows)
 	screen->win = mlx_new_window(screen->mlx, weight, height, "so long!");
 	if (!screen->sprites || !set_sprites(screen))
 	{
-		printf("Error\n");
+		write(1, "Error\n", 6);
 		exit(1);
 	}
 	screen->count = 0;
 	screen->frame = 1;
+	screen->ply_priority = 0;
 	mlx_key_hook(screen->win, key_hook, screen);
 	mlx_loop_hook(screen->mlx, render, screen);
 	mlx_hook(screen->win, 17, 0, end_game, screen);

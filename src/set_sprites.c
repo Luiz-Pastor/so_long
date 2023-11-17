@@ -6,14 +6,12 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 09:07:13 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/16 12:54:27 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:12:14 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/structs.h"
 #include "../inc/screen.h"
-
-#include <stdio.h>
 
 static int	push_player(t_data *screen)
 {
@@ -21,11 +19,15 @@ static int	push_player(t_data *screen)
 	int		h;
 	void	*mlx;
 
-	w = IMAGE_WEIGHT;
-	h = IMAGE_HEIGHT;
+	w = 244;
+	h = 244;
 	mlx = screen->mlx;
 	screen->sprites->player1 = mlx_xpm_file_to_image(mlx, PLY_INNER1, &w, &h);
 	screen->sprites->player2 = mlx_xpm_file_to_image(mlx, PLY_INNER2, &w, &h);
+	screen->sprites->player_down = mlx_xpm_file_to_image(mlx, PLY_DN, &w, &h);
+	screen->sprites->player_up = mlx_xpm_file_to_image(mlx, PLY_UP, &w, &h);
+	screen->sprites->player_right = mlx_xpm_file_to_image(mlx, PLY_RG, &w, &h);
+	screen->sprites->player_left = mlx_xpm_file_to_image(mlx, PLY_LF, &w, &h);
 	return (screen->sprites->player1 && screen->sprites->player2);
 }
 
@@ -85,5 +87,8 @@ int	push_images(t_data *screen)
 	if (!push_coll(screen))
 		return (0);
 	screen->end_sprite = mlx_xpm_file_to_image(mlx, DOOR_CLOSE, &w, &h);
-	return (screen->end_sprite != NULL);
+	screen->sprites->enemy1 = mlx_xpm_file_to_image(mlx, EMY_INNER1, &w, &h);
+	screen->sprites->enemy2 = mlx_xpm_file_to_image(mlx, EMY_INNER2, &w, &h);
+	return (screen->end_sprite && \
+	screen->sprites->enemy1 && screen->sprites->enemy2);
 }
