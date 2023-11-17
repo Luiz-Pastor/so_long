@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 08:00:13 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/16 09:18:49 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:09:45 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ struct s_data
 	void		*floor_sprite;
 	void		*end_sprite;
 	void		*coll_sprite;
+	void		*enemy_sprite;
 	t_game		*game;
 	int			count;
 	int			frame;
 	t_images	*sprites;
+	int			ply_priority;
+	int			ply_frame;
 };
 
 struct s_map
@@ -70,14 +73,18 @@ struct s_images
 {
 	void	*player1;
 	void	*player2;
+	void	*player_up;
+	void	*player_right;
+	void	*player_down;
+	void	*player_left;
 	void	*wall1;	
 	void	*wall2;	
 	void	*back1;	
 	void	*back2;	
-	void	*end1;	
-	void	*end2;	
 	void	*coll1;	
-	void	*coll2;	
+	void	*coll2;
+	void	*enemy1;
+	void	*enemy2;
 };
 
 #endif

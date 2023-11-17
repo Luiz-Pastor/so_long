@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:00:23 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/16 12:54:00 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:17:19 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ enum {
 
 # define PLY_INNER1		"textures/player/player_inner1.xpm"
 # define PLY_INNER2		"textures/player/player_inner1.xpm"
+# define PLY_DN			"textures/player/player_down.xpm"
+# define PLY_UP			"textures/player/player_up.xpm"
+# define PLY_LF			"textures/player/player_left.xpm"
+# define PLY_RG			"textures/player/player_right.xpm"
 # define WALL_INNER1	"textures/wall/wall_state1.xpm"
 # define WALL_INNER2	"textures/wall/wall_state3.xpm"
 # define BACK_INNER1	"textures/background/tile001.xpm"
@@ -42,6 +46,8 @@ enum {
 # define DOOR_CLOSE		"textures/door/door_close.xpm"
 # define COLL1			"textures/collec/egg.xpm"
 # define COLL2			"textures/collec/egg.xpm"
+# define EMY_INNER1		"textures/enemy/enemy_inner1.xpm"
+# define EMY_INNER2		"textures/enemy/enemy_inner2.xpm"
 
 t_data	*get_screen(int columns, int rows);
 int		render(t_data *screen);
