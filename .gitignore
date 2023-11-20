@@ -1,3 +1,4 @@
 *.o
 so_long
 libft/libft.a
+mlx/libmlx.a
