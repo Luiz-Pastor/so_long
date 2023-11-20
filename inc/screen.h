@@ -6,7 +6,7 @@
 /*   By: lpastor- <lpastor-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:00:23 by lpastor-          #+#    #+#             */
-/*   Updated: 2023/11/17 10:17:19 by lpastor-         ###   ########.fr       */
+/*   Updated: 2023/11/20 08:17:49 by lpastor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ enum {
 # define BACK_INNER1	"textures/background/tile001.xpm"
 # define BACK_INNER2	"textures/background/tile001.xpm"
 # define DOOR_CLOSE		"textures/door/door_close.xpm"
-# define COLL1			"textures/collec/egg.xpm"
-# define COLL2			"textures/collec/egg.xpm"
+# define COLL1			"textures/collec/cat_inner1.xpm"
+# define COLL2			"textures/collec/cat_inner2.xpm"
 # define EMY_INNER1		"textures/enemy/enemy_inner1.xpm"
 # define EMY_INNER2		"textures/enemy/enemy_inner2.xpm"
 
