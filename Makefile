@@ -21,13 +21,16 @@ HEADER=structs.h game.h map.h movement.h player.h screen.h
 MLB_FLAGS=-Lmlx -lmlx -framework OpenGL -framework AppKit
 ###############################################
 
-all: $(NAME) run
+all: $(NAME)
 
-$(NAME): $(OBJ) libft/libft.a
+$(NAME): $(OBJ) libft/libft.a mlx/libmlx.a
 	$(CC) $^ $(MLB_FLAGS) -o $(NAME)
 
 libft/libft.a:
 	@make -C libft/
+
+mlx/libmlx.a:
+	@make -C mlx
 
 %.o: $(SRC_FOLDER)/%.c
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
@@ -42,6 +45,7 @@ run: $(NAME)
 clean:
 	@rm -rf $(OBJ)
 	@make -C libft/ libft_clean
+	@make -C mlx/ clean
 
 fclean: clean
 	@rm -rf $(NAME)
